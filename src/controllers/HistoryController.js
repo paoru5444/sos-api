@@ -27,7 +27,6 @@ module.exports = {
         const { disease, family, physiological, social } = req.body
         const { infecciosa, alergica, infancia, sexual, intoxicacao, psiquica} = disease
         const { diabetes, cancer, avc, vicio, depressao, hipertensao, outros} = family
-        const { }
         const userId = req.userId
 
         const diseaseCreation = await Disease.create({ 
