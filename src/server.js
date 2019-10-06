@@ -15,4 +15,4 @@ mongoose.connect('mongodb+srv://omnistack:omnistack@cluster0-m1oax.mongodb.net/t
 app.use(express.json())
 app.use(routes)
 
-app.listen(3333)
+app.listen(process.env.PORT || 3333)
