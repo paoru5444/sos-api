@@ -17,7 +17,7 @@ module.exports = {
       
     try {
       if(await User.findOne({email})) {
-        return res.status(400).send({error: 'User already exists' })
+        return res.status(400).send({error: 'Usuário já existente' })
       }
 
       const user = await User.create(req.body)
@@ -44,7 +44,7 @@ module.exports = {
     }
     
     if(!await bcrypt.compare(password, user.password)) {
-      return res.status(400).send({ error: 'Invalid password'})
+      return res.status(400).send({ error: 'Senha inválida'})
     }
     
     user.password = undefined;
