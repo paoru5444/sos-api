@@ -7,10 +7,10 @@ module.exports = {
   },
 
   async store(req, res) {
-    const { anamneseId } = req.body;
+    const { anamneseId, description, name, useMode,  } = req.body;
     const {userId} = req;
 
-    if (userId && anamneseId) {
+    if (anamneseId && description && name && useMode) {
       const drugs = await Drugs.create({...req.body, userId})
       return res.status(200).json(drugs)
     } else {
