@@ -1,5 +1,4 @@
 const Anamnese = require('../models/Anamnese')
-const User = require('../models/User')
 
 module.exports = {
     async index(req, res) {
@@ -14,14 +13,18 @@ module.exports = {
       },
 
     async store(req, res) {
-        const { queixa, duracao, intensidade, frequencia, melhora_piora } = req.body
-        if (queixa && duracao && intensidade && frequencia && melhora_piora) {
-          const anamnese = await Anamnese.create(req.body)
+      const { queixa, duracao, intensidade, frequencia, melhora_piora } = req.body
+      const userId = req.userId
+      console.log(userId)
+      if (queixa && duracao && intensidade && frequencia && melhora_piora) {
+        const anamnese = await Anamnese.create({
+          userId, queixa, duracao, intensidade, frequencia, melhora_piora
+        })
 
-          return res.status(200).json(anamnese)
-        } else {
-            return res.send('Campos obrigatórios não preenchidos.')
-        }
+        return res.status(200).json(anamnese)
+      } else {
+        return res.send({ error: 'Campos obrigatórios não preenchidos.' })
+      }
     },
 
     async update(req, res) {

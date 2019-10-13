@@ -51,7 +51,7 @@ module.exports = {
         })
 
         const socialCreation = await Social.create({
-          userId, social,
+          userId,
           social: {...social, ...social.atividade_fisica.map(string => string.trim())}
         })
 
