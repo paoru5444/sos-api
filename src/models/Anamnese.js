@@ -8,6 +8,7 @@ const AnamneseSchema = new mongoose.Schema({
   intensidade: String,
   frequencia: String,
   melhora_piora: Boolean,
+  crmMedico: String,
 })
 
 module.exports = mongoose.model('Anamnese', AnamneseSchema)

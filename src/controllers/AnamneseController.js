@@ -1,26 +1,19 @@
 const Anamnese = require('../models/Anamnese')
 
 module.exports = {
-    async index(req, res) {
-      const anamnese = await Anamnese.find()
+    async show(req, res) {
+      const { userId } = req
+      const anamnese = await Anamnese.find({ userId: userId })
       return res.status(200).json(anamnese)
     },
 
-    async show(req, res) {
-        const id = req.params.id
-        const anamnese = await Anamnese.findById(id)
-        return res.status(200).json(anamnese)
-      },
-
     async store(req, res) {
-      const { queixa, duracao, intensidade, frequencia, melhora_piora } = req.body
-      const userId = req.userId
-      console.log(userId)
-      if (queixa && duracao && intensidade && frequencia && melhora_piora) {
-        const anamnese = await Anamnese.create({
-          userId, queixa, duracao, intensidade, frequencia, melhora_piora
-        })
+      const { queixa, duracao, intensidade, frequencia, melhora_piora, crmMedico } = req.body
 
+      const {userId} = req
+
+      if (queixa && duracao && intensidade && frequencia && melhora_piora && crmMedico) {
+        const anamnese = await Anamnese.create({...req.body, userId})
         return res.status(200).json(anamnese)
       } else {
         return res.send({ error: 'Campos obrigatórios não preenchidos.' })
