@@ -22,7 +22,8 @@ routes.post('/users', UserController.store )
 
 routes.use(authMiddleware)
 
-routes.get('/anamnese/show', AnamneseController.show )
+routes.get('/anamnese', AnamneseController.index )
+routes.get('/anamnese/:id', AnamneseController.show )
 routes.post('/anamnese', AnamneseController.store )
 routes.put('/anamnese/:id', AnamneseController.update )
 routes.delete('/anamnese/:id', AnamneseController.destroy )
