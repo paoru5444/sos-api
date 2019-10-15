@@ -22,7 +22,6 @@ routes.post('/users', UserController.store )
 
 routes.use(authMiddleware)
 
-routes.get('/anamnese', AnamneseController.index )
 routes.get('/anamnese/:id', AnamneseController.show )
 routes.post('/anamnese', AnamneseController.store )
 routes.put('/anamnese/:id', AnamneseController.update )
@@ -32,9 +31,11 @@ routes.get('/history', HistoryController.show )
 routes.post('/history', HistoryController.store )
 
 routes.get('/drugs', DrugsController.index )
+routes.get('/drugs/:id', DrugsController.show )
 routes.post('/drugs', DrugsController.store )
 
 routes.get('/alimentation', AlimentationController.index )
+routes.get('/alimentation/:id', AlimentationController.show )
 routes.post('/alimentation', AlimentationController.store )
 
 module.exports = routes

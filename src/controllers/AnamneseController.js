@@ -5,23 +5,11 @@ const Drugs = require('../models/Drugs')
 const mongoose = require('mongoose')
 
 module.exports = {
-    async index(req, res) {
-      const { userId } = req
-
-      const anamnese = await Anamnese.find({ userId })
-
-      return res.status(200).json(anamnese)
-    },
     async show(req, res) {
       const { userId } = req
-      const anamneseId = req.params.id
-      console.log(anamneseId)
 
       const anamnese = await Anamnese.find({ userId })
-      const alimentation = await Alimentation.find({ anamneseId })
-      const drugs = await Drugs.find({ anamneseId })
-
-      return res.status(200).json({anamnese, alimentation, drugs})
+      return res.status(200).send(anamnese)
     },
  
     async store(req, res) {

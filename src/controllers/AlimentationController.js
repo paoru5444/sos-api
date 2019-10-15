@@ -5,7 +5,15 @@ module.exports = {
     const alimentation = await Alimentation.find()
     return res.status(200).json(alimentation)
   },
+  async show(req, res) {
+    const anamneseId = req.params.id
 
+    const alimentation = await Alimentation.find({ anamneseId })
+
+    if(alimentation.length === 0) return res.status(404).send('Nenhuma queixa encontrada')
+
+    return res.status(200).json(alimentation)
+  },
   async store(req, res) {
     const { anamneseId, name, avoidAliment, description, foodType } = req.body;
     const {userId} = req;
