@@ -10,12 +10,12 @@ module.exports = {
 
     const alimentation = await Alimentation.find({ anamneseId })
 
-    if(alimentation) return res.status(404).send('Nenhum alimento encontrada')
+    if(alimentation) return res.status(404).send('Nenhuma alimentação registrada')
 
     return res.status(200).json(alimentation)
   },
   async store(req, res) {
-    const { anamneseId, name, avoidAliment, description } = req.body;
+    const { name } = req.body;
     const {userId} = req;
 
     if ( name ) {
