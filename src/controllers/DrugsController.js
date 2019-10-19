@@ -18,7 +18,7 @@ module.exports = {
     const { anamneseId, description, name, useMode,  } = req.body;
     const {userId} = req;
 
-    if ( name ) {
+    if (anamneseId && description && name && useMode) {
       const drugs = await Drugs.create({...req.body, userId})
       return res.status(200).json(drugs)
     } else {
