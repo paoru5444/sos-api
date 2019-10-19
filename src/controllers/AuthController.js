@@ -16,7 +16,10 @@ module.exports = {
     const { name, email, carteiraVascina, telefoneEmergencia, tipoSanguineo } = req.body
       
     try {
-      if(await User.findOne({email})) {
+
+      const hasUser = await User.findOne({email})
+      
+      if(hasUser) {
         return res.status(400).send({error: 'Usuário já existente' })
       }
 
