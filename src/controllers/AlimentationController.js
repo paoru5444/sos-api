@@ -10,7 +10,7 @@ module.exports = {
 
     const alimentation = await Alimentation.find({ anamneseId })
 
-    if(alimentation) return res.status(404).send('Nenhuma alimentação registrada')
+    if(alimentation.length === 0) return res.status(404).send('Nenhuma alimentação registrada')
 
     return res.status(200).json(alimentation)
   },

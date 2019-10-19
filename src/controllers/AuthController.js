@@ -7,13 +7,13 @@ const authConfig = require('../config/auth')
 
 function generateToken(params = {}) {
   return jwt.sign(params, authConfig.secret, {
-    expiresIn: 86400,
+    expiresIn: 186400,
   })
 }
 
 module.exports = {
   async register(req, res) {
-    const { name, email, carteiraVascina, telefoneEmergencia, tipoSanguineo } = req.body
+    const { name, email } = req.body
       
     try {
 
@@ -23,7 +23,7 @@ module.exports = {
         return res.status(400).send({error: 'Usuário já existente' })
       }
 
-      if(name && email && carteiraVascina && telefoneEmergencia && tipoSanguineo) {
+      if(name && email) {
         const user = await User.create(req.body)
         
         user.password = undefined;

@@ -5,7 +5,7 @@ const AlimentationSchema = new mongoose.Schema({
   userId: String,
   anamneseId: String,
   name: String,
-  foodType: Boolean,
+  foodType: String,
 })
 
 module.exports = mongoose.model('Alimentation', AlimentationSchema)
