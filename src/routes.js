@@ -10,6 +10,7 @@ const AuthController = require('./controllers/AuthController')
 const HistoryController = require('./controllers/HistoryController')
 const DrugsController = require('./controllers/DrugsController')
 const AlimentationController = require('./controllers/AlimentationController')
+const RecomendationController = require('./controllers/RecomendationController')
 
 const routes = express.Router()
 const upload = multer(uploadConfig)
@@ -40,5 +41,9 @@ routes.post('/drugs', DrugsController.store )
 routes.get('/alimentation', AlimentationController.index )
 routes.get('/alimentation/:id', AlimentationController.show )
 routes.post('/alimentation', AlimentationController.store )
+
+routes.get('/recomendation', RecomendationController.index )
+routes.get('/recomendation/:id', RecomendationController.show )
+routes.post('/recomendation', RecomendationController.store )
 
 module.exports = routes

@@ -13,22 +13,25 @@ function generateToken(params = {}) {
 
 module.exports = {
   async register(req, res) {
-    const { email } = req.body
+    const { name, email, carteiraVascina, telefoneEmergencia, tipoSanguineo } = req.body
       
     try {
       if(await User.findOne({email})) {
         return res.status(400).send({error: 'Usuário já existente' })
       }
 
-      const user = await User.create(req.body)
+      if(name && email && carteiraVascina && telefoneEmergencia && tipoSanguineo) {
+        const user = await User.create(req.body)
+        
+        user.password = undefined;
 
-      user.password = undefined;
-
-      
-      return res.send({
-        user,
-        token: generateToken({ id: user.id })
-      })
+        return res.send({
+          user,
+          token: generateToken({ id: user.id })
+        })
+      } else {
+        return res.status(400).send({error: 'Campos obrigatórios não preenchidos' })
+      }
     } catch(error) {
       return res.status(400).send({error: 'Cadastro falhou'})
     }

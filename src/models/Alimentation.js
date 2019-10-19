@@ -5,7 +5,6 @@ const AlimentationSchema = new mongoose.Schema({
   userId: String,
   anamneseId: String,
   name: String,
-  foodType: String,
   description: String,
   avoidAliment: Boolean,
 })

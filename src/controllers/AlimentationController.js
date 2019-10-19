@@ -15,7 +15,7 @@ module.exports = {
     return res.status(200).json(alimentation)
   },
   async store(req, res) {
-    const { anamneseId, name, avoidAliment, description, foodType } = req.body;
+    const { anamneseId, name, avoidAliment, description } = req.body;
     const {userId} = req;
 
     if ( anamneseId && name && foodType && description && (avoidAliment === false || avoidAliment === true)  ) {

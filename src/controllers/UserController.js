@@ -5,7 +5,11 @@ module.exports = {
       const user = await User.find()
       return res.status(200).json(user)
     },
-
+    async show(req, res) {
+      const {userId} = req
+      const user = await User.findById({_id: userId})
+      return res.status(200).json(user)
+    },
     async store(req, res) {
       const { name, email, password, carteiraVascina, telefoneEmergencia, tipoSanguineo } = req.body
 
