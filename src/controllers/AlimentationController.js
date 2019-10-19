@@ -18,7 +18,7 @@ module.exports = {
     const { anamneseId, name, avoidAliment, description } = req.body;
     const {userId} = req;
 
-    if ( anamneseId && name && foodType && description && (avoidAliment === false || avoidAliment === true)  ) {
+    if ( name ) {
       const alimentation = await Alimentation.create({...req.body, userId})
       return res.status(200).json(alimentation)
     } else {
