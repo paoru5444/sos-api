@@ -15,10 +15,10 @@ module.exports = {
     return res.status(200).json(drugs)
   },
   async store(req, res) {
-    const { anamneseId, description, name, useMode,  } = req.body;
+    const { anamneseId, dosage, name, useMode, period  } = req.body;
     const {userId} = req;
 
-    if (anamneseId && description && name && useMode) {
+    if (anamneseId && name && useMode && dosage && period) {
       const drugs = await Drugs.create({...req.body, userId})
       return res.status(200).json(drugs)
     } else {

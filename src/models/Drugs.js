@@ -6,7 +6,8 @@ const DrougsSchema = new mongoose.Schema({
   anamneseId: String,
   name: String,
   useMode: String,
-  description: String,
+  period: String,
+  dosage: String,
 })
 
 module.exports = mongoose.model('Drugs', DrougsSchema)
