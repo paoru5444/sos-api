@@ -20,11 +20,11 @@ module.exports = {
     },
  
     async store(req, res) {
-      const { queixas, duracao, intensidade, frequencia, localizacao } = req.body
+      const { queixas, duracao, intensidade, frequencia } = req.body
 
       const {userId} = req
 
-      if (queixas && duracao && intensidade && frequencia && localizacao) {
+      if (queixas && duracao && intensidade && frequencia) {
         const anamnese = await Anamnese.create({...req.body, userId})
         return res.status(200).json(anamnese)
       } else {
@@ -33,10 +33,10 @@ module.exports = {
     },
 
     async update(req, res) {
-        const { queixas, duracao, intensidade, frequencia, localizacao } = req.body
+        const { queixas, duracao, intensidade, frequencia } = req.body
         const id = req.params.id
 
-        if (queixas && duracao && intensidade && frequencia && localizacao) {
+        if (queixas && duracao && intensidade && frequencia) {
           const anamnese = await Anamnese.findByIdAndUpdate({_id: id}, req.body)
           return res.status(200).json(anamnese)
         } else {
