@@ -8,7 +8,7 @@ module.exports = {
   async index(req, res) {
     const { userId } = req
 
-    const anamnese = await Anamnese.find({ userId })
+    const anamnese = await Anamnese.find({ userId }).sort({ createdAt: -1 })
     return res.status(200).send(anamnese)
   },
 
@@ -33,15 +33,11 @@ module.exports = {
     },
 
     async update(req, res) {
-        const { queixas, duracao, intensidade, frequencia } = req.body
         const id = req.params.id
 
-        if (queixas && duracao && intensidade && frequencia) {
-          const anamnese = await Anamnese.findByIdAndUpdate({_id: id}, req.body)
-          return res.status(200).json(anamnese)
-        } else {
-            return res.send('Campos obrigatórios não preenchidos.')
-        }
+        const anamnese = await Anamnese.findByIdAndUpdate({_id: id}, req.body)
+
+        return res.status(200).json(anamnese)
     },
 
     async destroy(req, res) {
