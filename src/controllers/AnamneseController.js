@@ -8,7 +8,7 @@ module.exports = {
   async index(req, res) {
     const { userId } = req
 
-    const anamnese = await Anamnese.find({ userId }).sort({ field: createdAt })
+    const anamnese = await Anamnese.find({ userId }).sort('-createdAt')
     return res.status(200).send(anamnese)
   },
 
